@@ -1,0 +1,329 @@
+@import url("https://fonts.googleapis.com/css?family=Fredoka+One&display=swap");
+
+$background: #e7ffff;
+$purple: #762e77;
+$blue: #046fb7;
+$circle-blue: #343576;
+
+$earth: #45c6f0;
+$earth-border: #76ecfc;
+$continent: #3edfd9;
+
+$sun: #df981c;
+$sun-border: #fcc837;
+
+$venus: #e64791;
+$venus-border: #fe6ac5;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Fredoka One", cursive;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: $background;
+
+  &__elements {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.bg {
+  width: 450px;
+  height: 388px;
+  background-image: linear-gradient(to bottom, $purple, $blue);
+  -webkit-mask-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3522775/HelloWorldMainBGBlack.svg);
+  mask-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3522775/HelloWorldMainBGBlack.svg);
+  mask-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &__circles {
+    &-items {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__circle {
+        position: absolute;
+        border-radius: 50%;
+        background: $circle-blue;
+      }
+    }
+  }
+}
+
+.circle1 {
+  width: 350px;
+  height: 350px;
+  opacity: 0.3;
+}
+
+.circle2 {
+  width: 330px;
+  height: 330px;
+  opacity: 0.5;
+}
+
+.circle3 {
+  width: 300px;
+  height: 300px;
+  opacity: 0.8;
+}
+
+.sun,
+.venus {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.sun {
+  top: -15px;
+  left: 25px;
+  background: $sun;
+  border: 5px solid $sun-border;
+}
+
+.venus {
+  right: 40px;
+  bottom: -20px;
+  background: $venus;
+  border: 5px solid $venus-border;
+}
+
+.earth {
+  cursor: pointer;
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: $earth;
+  border: 8px solid $earth-border;
+  overflow: hidden;
+
+  &__text {
+    color: white;
+    font-size: 50px;
+    z-index: 2;
+  }
+
+  &__continent {
+    &-left,
+    &-right,
+    &-bottom {
+      background-color: $continent;
+      border-radius: 50%;
+      position: absolute;
+    }
+    &-left {
+      width: 100px;
+      height: 175px;
+      left: -45px;
+      transform: rotate(-20deg);
+      top: 70px;
+    }
+
+    &-right {
+      width: 150px;
+      height: 200px;
+      transform: rotate(70deg);
+      right: -70px;
+      top: 0px;
+    }
+
+    &-bottom {
+      width: 100px;
+      height: 100px;
+      right: 15px;
+      bottom: -65px;
+    }
+  }
+}
+
+.cloud {
+  background-color: white;
+  opacity: 0.5;
+  position: absolute;
+}
+
+.cloud1,
+.cloud2,
+.cloud3,
+.cloud4,
+.cloud5,
+.cloud6,
+.cloud7 {
+  border-radius: 40px;
+}
+
+.cloud1 {
+  width: 100px;
+  height: 50px;
+  bottom: 120px;
+  left: 90px;
+}
+
+.cloud2 {
+  width: 80px;
+  height: 25px;
+  bottom: 80px;
+  left: 125px;
+}
+
+.cloud3 {
+  width: 35px;
+  height: 25px;
+  bottom: 80px;
+  left: 220px;
+}
+
+.cloud4 {
+  width: 170px;
+  height: 35px;
+  top: 120px;
+  left: 60px;
+}
+
+.cloud5 {
+  width: 110px;
+  height: 25px;
+  top: 80px;
+  left: 150px;
+}
+
+.cloud6 {
+  width: 110px;
+  height: 25px;
+  top: 230px;
+  right: 60px;
+}
+
+.cloud7 {
+  width: 70px;
+  height: 50px;
+  top: 165px;
+  right: 100px;
+}
+
+.hello__world {
+  z-index: 10;
+  position: absolute;
+  color: white;
+  font-size: 0px;
+  -webkit-text-stroke: 1px $circle-blue;
+}
+
+/* --------Social Icons-------- */
+
+/* Color Variables */
+$color-codepen: #000;
+$color-twitter: #2b97f1;
+/* Social Icon Mixin */
+@mixin social-icon($color) {
+  background: $color;
+  color: #fff;
+
+  .tooltip {
+    background: $color;
+    color: currentColor;
+
+    &:after {
+      border-top-color: $color;
+    }
+  }
+}
+
+.social-icons {
+  display: flex;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0 0.7rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: all 0.15s ease;
+
+  &:hover {
+    color: #fff;
+
+    .tooltip {
+      visibility: visible;
+      opacity: 1;
+      transform: translate(-50%, -150%);
+    }
+  }
+
+  &:active {
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5) inset;
+  }
+
+  &--twitter {
+    @include social-icon($color-twitter);
+  }
+  &--codepen {
+    @include social-icon($color-codepen);
+  }
+
+  i {
+    position: relative;
+    top: 1px;
+  }
+}
+
+/* Tooltips */
+.tooltip {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 0.4rem 0.6rem;
+  border-radius: 40px;
+  font-size: 0.4rem;
+  font-weight: bold;
+  opacity: 0;
+  pointer-events: none;
+  text-transform: uppercase;
+  transform: translate(-50%, -100%);
+  transition: all 0.3s ease;
+  z-index: 1;
+
+  &:after {
+    display: block;
+    position: absolute;
+    bottom: 1px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    content: "";
+    border: solid;
+    border-width: 10px 10px 0 10px;
+    border-color: transparent;
+    transform: translate(-50%, 100%);
+  }
+}
